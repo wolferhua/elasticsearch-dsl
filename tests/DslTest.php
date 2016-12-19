@@ -1,9 +1,10 @@
 <?php
 namespace Xiaobeicn\ElasticSearchDsl;
 
+use PHPUnit\Framework\TestCase;
 use Xiaobeicn\ElasticSearchDsl\ElasticSearchDsl;
 
-class DslTest extends PHPUnit_Framework_TestCase
+class DslTest extends TestCase
 {
     public function testQuery() 
     {

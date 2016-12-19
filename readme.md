@@ -31,7 +31,7 @@ echo json_encode($dsl);
 ```
 
 ### Doc
-[Document](https://github.com/xiaobeicn/elasticsearch-dsl/blod/master/doc/)
+[Document](https://github.com/xiaobeicn/elasticsearch-dsl/tree/master/doc)
 
 ### License
 

@@ -42,7 +42,7 @@ class ElasticSearchDsl
     private function buildWhere($condition, &$params)
     {
         if ($this->debug) {
-            p($condition);
+            var_dump($condition);
         }
         $where = $this->buildCondition($condition, $params);
         return $where ? ['bool' => $where] : ['match_all' => []];
@@ -104,7 +104,6 @@ class ElasticSearchDsl
 
     private function buildAndCondition($operator, $operands, &$params)
     {
-        // 待优化，如何合并同级
         $parts = [];
         $operator = $operator == 'AND' ? 'must' : 'should';
         foreach ($operands as $operand) {
@@ -278,7 +277,7 @@ class ElasticSearchDsl
             return [];
         }
         if ($this->debug) {
-            p($columns);
+            var_dump($columns);
         }
         $group = [];
         foreach ($columns as $key => $value) {
@@ -389,7 +388,7 @@ class ElasticSearchDsl
     private function bindPendingParams()
     {
         if ($this->debug) {
-            p($this->_pendingParams);
+            var_dump($this->_pendingParams);
         }
         $this->dsl = str_replace(array_keys($this->_pendingParams), array_values($this->_pendingParams), json_encode($this->dsl));
         $this->_pendingParams = [];

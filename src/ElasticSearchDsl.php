@@ -102,7 +102,7 @@ class ElasticSearchDsl
     private function buildWhere($condition, &$params)
     {
         if ($this->debug) {
-            p($condition);
+            var_dump($condition);
         }
         $where = $this->buildCondition($condition, $params);
         return $where ? ['bool' => $where] : ['match_all' => []];
@@ -411,7 +411,7 @@ class ElasticSearchDsl
             return [];
         }
         if ($this->debug) {
-            p($columns);
+            var_dump($columns);
         }
         $group = [];
         foreach ($columns as $key => $value) {
@@ -452,7 +452,7 @@ class ElasticSearchDsl
             return [];
         }
         if ($this->debug) {
-            p($columns);
+            var_dump($columns);
         }
         $aggs = [];
         foreach ($columns as $key => $value) {
@@ -583,7 +583,7 @@ class ElasticSearchDsl
             $result = [];
             foreach ($columns as $column) {
                 if (preg_match('/^(.*?)\s+(asc|desc)$/i', $column, $matches)) {
-                    $result[$matches[1]] = strcasecmp($matches[2], 'desc') ? 'ASC' : 'DESC';
+                    $result[$matches[1]] = strcasecmvar_dump($matches[2], 'desc') ? 'ASC' : 'DESC';
                 } else {
                     $result[$column] = 'ASC';
                 }
@@ -617,7 +617,7 @@ class ElasticSearchDsl
     private function bindPendingParams()
     {
         if ($this->debug) {
-            p($this->_pendingParams);
+            var_dump($this->_pendingParams);
         }
         $this->_pendingParams = array_reverse($this->_pendingParams); // 要重大到小替换，避免出错
         $this->dsl = str_replace(array_keys($this->_pendingParams), array_values($this->_pendingParams), json_encode($this->dsl));
